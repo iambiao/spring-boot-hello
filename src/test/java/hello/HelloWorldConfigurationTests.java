@@ -17,6 +17,7 @@ package hello;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.apiguardian.api.API;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -43,8 +44,9 @@ public class HelloWorldConfigurationTests {
 	@Test
 	public void testGreeting() throws Exception {
 		ResponseEntity<String> entity = restTemplate
-				.getForEntity("http://localhost:" + this.port + "/", String.class);
+				.getForEntity("http://localhost:" + this.port + "/test", String.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
+		assertEquals("test new API--modify",entity.getBody());
 	}
 
 }
